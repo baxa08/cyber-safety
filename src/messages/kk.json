@@ -1,0 +1,108 @@
+{
+  "common": {
+    "appName": "CyberSafe",
+    "home": "Басты бет",
+    "lessons": "Сабақтар",
+    "tests": "Тесттер",
+    "dashboard": "Панель",
+    "progress": "Прогресс",
+    "login": "Кіру",
+    "register": "Тіркелу",
+    "logout": "Шығу",
+    "language": "Тіл",
+    "search": "Іздеу",
+    "save": "Сақтау",
+    "cancel": "Болдырмау",
+    "delete": "Жою",
+    "edit": "Өңдеу",
+    "create": "Құру",
+    "back": "Артқа",
+    "next": "Келесі",
+    "submit": "Жіберу",
+    "loading": "Жүктелуде..."
+  },
+  "home": {
+    "title": "Қауіпсіз интернет-мінез-құлық",
+    "subtitle": "Киберқауіпсіздік негіздерін үйренуге арналған интерактивті платформа",
+    "description": "Интерактивті сабақтар мен тесттер арқылы цифрлық әлемде өзіңізді қорғауды үйреніңіз",
+    "startLearning": "Оқуды бастау",
+    "forTeachers": "Мұғалімдерге",
+    "forStudents": "Оқушыларға",
+    "features": {
+      "lessons": "Интерактивті сабақтар",
+      "lessonsDesc": "Интернет қауіпсіздігі бойынша 10 тақырып практикалық мысалдармен",
+      "tests": "Білім тесттері",
+      "testsDesc": "Әр сабақтан кейін білімдеріңізді тексеріңіз",
+      "progress": "Прогресті бақылау",
+      "progressDesc": "Жетістіктеріңіз бен нәтижелеріңізді қадағалаңыз"
+    }
+  },
+  "auth": {
+    "loginTitle": "Жүйеге кіру",
+    "registerTitle": "Тіркелу",
+    "email": "Электрондық пошта",
+    "password": "Құпия сөз",
+    "confirmPassword": "Құпия сөзді растаңыз",
+    "name": "Аты",
+    "role": "Рөл",
+    "roleStudent": "Оқушы",
+    "roleTeacher": "Мұғалім",
+    "school": "Мектеп",
+    "class": "Сынып",
+    "noAccount": "Аккаунт жоқ па?",
+    "hasAccount": "Аккаунт бар ма?",
+    "forgotPassword": "Құпия сөзді ұмыттыңыз ба?"
+  },
+  "lessons": {
+    "catalog": "Сабақтар каталогы",
+    "lesson": "Сабақ",
+    "difficulty": "Күрделілік",
+    "easy": "Жеңіл",
+    "medium": "Орташа",
+    "hard": "Күрделі",
+    "duration": "Ұзақтығы",
+    "minutes": "мин",
+    "startLesson": "Сабақты бастау",
+    "continueLesson": "Жалғастыру",
+    "completed": "Өтілді",
+    "takeTest": "Тест тапсыру"
+  },
+  "tests": {
+    "title": "Тест",
+    "question": "Сұрақ",
+    "of": "/",
+    "selectAnswer": "Жауапты таңдаңыз",
+    "finish": "Тестті аяқтау",
+    "result": "Нәтиже",
+    "score": "Ұпай",
+    "passed": "Тест өтілді!",
+    "failed": "Тест өтілмеді",
+    "tryAgain": "Қайта көру",
+    "passingScore": "Өту балы"
+  },
+  "dashboard": {
+    "welcome": "Қош келдіңіз",
+    "myProgress": "Менің прогресім",
+    "completedLessons": "Өтілген сабақтар",
+    "averageScore": "Орташа балл",
+    "totalTime": "Жалпы уақыт",
+    "recentActivity": "Соңғы белсенділік"
+  },
+  "teacher": {
+    "myLessons": "Менің сабақтарым",
+    "myStudents": "Менің оқушыларым",
+    "createLesson": "Сабақ құру",
+    "editLesson": "Сабақты өңдеу",
+    "studentProgress": "Оқушылар прогресі",
+    "className": "Сынып",
+    "addStudent": "Оқушы қосу"
+  },
+  "admin": {
+    "users": "Пайдаланушылар",
+    "content": "Контент",
+    "statistics": "Статистика",
+    "totalUsers": "Барлық пайдаланушылар",
+    "totalLessons": "Барлық сабақтар",
+    "activeUsers": "Белсенді пайдаланушылар"
+  }
+}

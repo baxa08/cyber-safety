@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "branchName": "main",
+  "worktreePath": "/Users/bakdauletzhaparov/Desktop/vs code/CYBER",
+  "upstream": null,
+  "mergeBase": null,
+  "firstSeenHead": "4090d7697f86c069a63b7f29304883d4714a6baf",
+  "lastSeenHead": "4090d7697f86c069a63b7f29304883d4714a6baf",
+  "lastAnalyzedHead": "4090d7697f86c069a63b7f29304883d4714a6baf",
+  "stale": false,
+  "staleReason": null,
+  "staleSince": null,
+  "lifecycleEvent": null,
+  "createdAt": "2026-05-01T21:27:37.513Z",
+  "updatedAt": "2026-05-01T21:27:37.513Z"
+}

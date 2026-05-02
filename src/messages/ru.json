@@ -1,0 +1,108 @@
+{
+  "common": {
+    "appName": "CyberSafe",
+    "home": "Главная",
+    "lessons": "Уроки",
+    "tests": "Тесты",
+    "dashboard": "Панель",
+    "progress": "Прогресс",
+    "login": "Войти",
+    "register": "Регистрация",
+    "logout": "Выйти",
+    "language": "Язык",
+    "search": "Поиск",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "create": "Создать",
+    "back": "Назад",
+    "next": "Далее",
+    "submit": "Отправить",
+    "loading": "Загрузка..."
+  },
+  "home": {
+    "title": "Безопасное интернет-поведение",
+    "subtitle": "Интерактивная платформа для изучения основ кибербезопасности",
+    "description": "Научитесь защищать себя в цифровом мире через интерактивные уроки и тесты",
+    "startLearning": "Начать обучение",
+    "forTeachers": "Для учителей",
+    "forStudents": "Для учеников",
+    "features": {
+      "lessons": "Интерактивные уроки",
+      "lessonsDesc": "10 тем по интернет-безопасности с практическими примерами",
+      "tests": "Тесты знаний",
+      "testsDesc": "Проверьте свои знания после каждого урока",
+      "progress": "Отслеживание прогресса",
+      "progressDesc": "Следите за своими достижениями и результатами"
+    }
+  },
+  "auth": {
+    "loginTitle": "Вход в систему",
+    "registerTitle": "Регистрация",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "name": "Имя",
+    "role": "Роль",
+    "roleStudent": "Ученик",
+    "roleTeacher": "Учитель",
+    "school": "Школа",
+    "class": "Класс",
+    "noAccount": "Нет аккаунта?",
+    "hasAccount": "Уже есть аккаунт?",
+    "forgotPassword": "Забыли пароль?"
+  },
+  "lessons": {
+    "catalog": "Каталог уроков",
+    "lesson": "Урок",
+    "difficulty": "Сложность",
+    "easy": "Лёгкий",
+    "medium": "Средний",
+    "hard": "Сложный",
+    "duration": "Длительность",
+    "minutes": "мин",
+    "startLesson": "Начать урок",
+    "continueLesson": "Продолжить",
+    "completed": "Пройден",
+    "takeTest": "Пройти тест"
+  },
+  "tests": {
+    "title": "Тест",
+    "question": "Вопрос",
+    "of": "из",
+    "selectAnswer": "Выберите ответ",
+    "finish": "Завершить тест",
+    "result": "Результат",
+    "score": "Баллы",
+    "passed": "Тест пройден!",
+    "failed": "Тест не пройден",
+    "tryAgain": "Попробовать снова",
+    "passingScore": "Проходной балл"
+  },
+  "dashboard": {
+    "welcome": "Добро пожаловать",
+    "myProgress": "Мой прогресс",
+    "completedLessons": "Пройдено уроков",
+    "averageScore": "Средний балл",
+    "totalTime": "Общее время",
+    "recentActivity": "Последняя активность"
+  },
+  "teacher": {
+    "myLessons": "Мои уроки",
+    "myStudents": "Мои ученики",
+    "createLesson": "Создать урок",
+    "editLesson": "Редактировать урок",
+    "studentProgress": "Прогресс учеников",
+    "className": "Класс",
+    "addStudent": "Добавить ученика"
+  },
+  "admin": {
+    "users": "Пользователи",
+    "content": "Контент",
+    "statistics": "Статистика",
+    "totalUsers": "Всего пользователей",
+    "totalLessons": "Всего уроков",
+    "activeUsers": "Активных пользователей"
+  }
+}
