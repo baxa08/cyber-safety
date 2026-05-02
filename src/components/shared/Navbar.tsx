@@ -35,12 +35,11 @@ export function Navbar() {
         </Link>
 
         <nav className="flex items-center gap-4">
-          <Link href="/lessons" className="text-sm text-gray-600 hover:text-gray-900">
-            {t("common.lessons")}
-          </Link>
-
           {profile ? (
             <>
+              <Link href="/lessons" className="text-sm text-gray-600 hover:text-gray-900">
+                {t("common.lessons")}
+              </Link>
               {profile.role === "student" && (
                 <Link href="/progress" className="text-sm text-gray-600 hover:text-gray-900">
                   {t("common.progress")}

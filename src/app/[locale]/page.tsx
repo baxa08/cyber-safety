@@ -56,26 +56,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="border-y border-gray-800 bg-gray-900/50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-3 gap-8 text-center">
-            <div>
-              <p className="text-2xl font-bold text-green-400">10</p>
-              <p className="text-sm text-gray-500 mt-1">{t("home.features.lessons")}</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-emerald-400">3</p>
-              <p className="text-sm text-gray-500 mt-1">{t("auth.role")}</p>
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-teal-400">2</p>
-              <p className="text-sm text-gray-500 mt-1">{t("common.language")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-14">
