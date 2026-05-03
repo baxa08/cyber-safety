@@ -264,7 +264,9 @@ export default function CreateTestPage() {
                         onChange={(e) => updateOption(qIndex, "ru", optIndex, e.target.value)}
                         required
                         placeholder={`Вариант ${optIndex + 1} (рус)`}
-                        className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className={`w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                          q.correctIndex === optIndex ? "border-green-500 bg-green-50" : ""
+                        }`}
                       />
                       <input
                         type="text"
@@ -272,7 +274,9 @@ export default function CreateTestPage() {
                         onChange={(e) => updateOption(qIndex, "kk", optIndex, e.target.value)}
                         required
                         placeholder={`Нұсқа ${optIndex + 1} (қаз)`}
-                        className="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className={`w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                          q.correctIndex === optIndex ? "border-green-500 bg-green-50" : ""
+                        }`}
                       />
                     </div>
                   </div>
