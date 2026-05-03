@@ -59,14 +59,14 @@ export default function CreateTestPage() {
         if (existingTest) {
           setExistingTestId(existingTest.$id);
           setPassingScore(existingTest.passingScore);
-          const parsed: TestQuestion[] = JSON.parse(existingTest.questions);
+          const parsed = JSON.parse(existingTest.questions);
           setQuestions(
-            parsed.map((q) => ({
-              question_ru: q.question_ru,
-              question_kk: q.question_kk,
+            parsed.map((q: Record<string, unknown>) => ({
+              question_ru: q.question_ru as string,
+              question_kk: q.question_kk as string,
               options_ru: q.options_ru as [string, string, string, string],
               options_kk: q.options_kk as [string, string, string, string],
-              correctIndex: Number(q.correctIndex),
+              correctIndex: Number(q.correctIndex ?? q.correct ?? 0),
             }))
           );
         }

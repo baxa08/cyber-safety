@@ -39,7 +39,11 @@ export default function TestPage() {
         }
 
         const doc = await databases.getDocument(DATABASE_ID, COLLECTIONS.TESTS, testId);
-        const parsed: TestQuestion[] = JSON.parse(doc.questions as string);
+        const raw = JSON.parse(doc.questions as string);
+        const parsed: TestQuestion[] = raw.map((q: Record<string, unknown>) => ({
+          ...q,
+          correctIndex: Number(q.correctIndex ?? q.correct ?? 0),
+        }));
         setQuestions(parsed);
         setLessonId(doc.lessonId as string);
         setPassingScore(doc.passingScore as number);
