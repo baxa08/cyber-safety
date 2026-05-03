@@ -46,14 +46,14 @@ export function Navbar() {
                 </Link>
               )}
               {(profile.role === "teacher" || profile.role === "admin") && (
-                <>
-                  <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900">
-                    {t("teacher.myLessons")}
-                  </Link>
-                  <Link href="/teacher/students" className="text-sm text-gray-600 hover:text-gray-900">
-                    {t("teacher.myStudents")}
-                  </Link>
-                </>
+                <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900">
+                  {t("teacher.myLessons")}
+                </Link>
+              )}
+              {profile.role === "teacher" && (
+                <Link href="/teacher/students" className="text-sm text-gray-600 hover:text-gray-900">
+                  {t("teacher.myStudents")}
+                </Link>
               )}
               {profile.role === "admin" && (
                 <Link href="/admin/stats" className="text-sm text-gray-600 hover:text-gray-900">
