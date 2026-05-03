@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
-import { Link, useRouter } from "@/i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { register, UserRole } from "@/lib/auth";
 
 export default function RegisterPage() {
   const t = useTranslations();
-  const router = useRouter();
+  const locale = useLocale();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +36,7 @@ export default function RegisterPage() {
 
     try {
       await register(email, password, name, role, school, userClass);
-      router.push("/dashboard");
+      window.location.href = `/${locale}/dashboard`;
     } catch {
       setError("Ошибка регистрации. Возможно, email уже используется.");
     } finally {
