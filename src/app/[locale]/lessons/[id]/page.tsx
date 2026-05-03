@@ -25,7 +25,7 @@ export default function LessonPage() {
         const user = await getCurrentUser();
         if (user) {
           const profile = await getUserProfile(user.$id);
-          if (profile?.role === "admin") {
+          if (profile?.role === "admin" || profile?.role === "teacher") {
             setIsAdmin(true);
           }
         }
