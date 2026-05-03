@@ -47,7 +47,25 @@ export default function TestPage() {
         setQuestions(parsed);
         setLessonId(doc.lessonId as string);
         setPassingScore(doc.passingScore as number);
-        setAnswers(new Array(parsed.length).fill(-1));
+
+        // Restore saved progress from localStorage
+        const savedKey = `test_progress_${testId}`;
+        const saved = localStorage.getItem(savedKey);
+        if (saved) {
+          try {
+            const { answers: savedAnswers, currentQ } = JSON.parse(saved);
+            if (Array.isArray(savedAnswers) && savedAnswers.length === parsed.length) {
+              setAnswers(savedAnswers);
+              setCurrentQuestion(currentQ || 0);
+            } else {
+              setAnswers(new Array(parsed.length).fill(-1));
+            }
+          } catch {
+            setAnswers(new Array(parsed.length).fill(-1));
+          }
+        } else {
+          setAnswers(new Array(parsed.length).fill(-1));
+        }
       } catch (err) {
         console.error("Failed to load test:", err);
       } finally {
@@ -57,21 +75,30 @@ export default function TestPage() {
     load();
   }, [testId]);
 
+  function saveToLocal(newAnswers: number[], newQ: number) {
+    localStorage.setItem(`test_progress_${testId}`, JSON.stringify({ answers: newAnswers, currentQ: newQ }));
+  }
+
   function selectAnswer(index: number) {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = index;
     setAnswers(newAnswers);
+    saveToLocal(newAnswers, currentQuestion);
   }
 
   function nextQuestion() {
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      const newQ = currentQuestion + 1;
+      setCurrentQuestion(newQ);
+      saveToLocal(answers, newQ);
     }
   }
 
   function prevQuestion() {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
+      const newQ = currentQuestion - 1;
+      setCurrentQuestion(newQ);
+      saveToLocal(answers, newQ);
     }
   }
 
@@ -86,6 +113,7 @@ export default function TestPage() {
     const percentage = Math.round((correct / questions.length) * 100);
     setScore(percentage);
     setShowResult(true);
+    localStorage.removeItem(`test_progress_${testId}`);
 
     const user = await getCurrentUser();
     if (user) {
@@ -149,6 +177,7 @@ export default function TestPage() {
                   setShowResult(false);
                   setCurrentQuestion(0);
                   setAnswers(new Array(questions.length).fill(-1));
+                  localStorage.removeItem(`test_progress_${testId}`);
                 }}
                 className="border border-blue-600 text-blue-600 px-6 py-2 rounded-lg font-medium hover:bg-blue-50 transition"
               >
