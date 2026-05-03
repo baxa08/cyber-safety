@@ -102,6 +102,10 @@
     "hasTest": "Тест",
     "noTest": "Тест жоқ",
     "studentProgress": "Оқушылар прогресі",
+    "lessonProgress": "Сабақтар бойынша прогресс",
+    "testsTaken": "Тесттер тапсырылды",
+    "completedDate": "Күні",
+    "notStarted": "Басталмаған",
     "className": "Сынып",
     "addStudent": "Оқушы қосу"
   },

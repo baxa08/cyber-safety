@@ -102,6 +102,10 @@
     "hasTest": "Тест",
     "noTest": "Нет теста",
     "studentProgress": "Прогресс учеников",
+    "lessonProgress": "Прогресс по урокам",
+    "testsTaken": "Тестов сдано",
+    "completedDate": "Дата",
+    "notStarted": "Не начат",
     "className": "Класс",
     "addStudent": "Добавить ученика"
   },

@@ -9,6 +9,7 @@ import { Query } from "appwrite";
 
 interface StudentInfo {
   $id: string;
+  userId: string;
   name: string;
   email: string;
   class: string;
@@ -57,6 +58,7 @@ export default function TeacherStudentsPage() {
 
         studentList.push({
           $id: student.$id,
+          userId: student.userId as string,
           name: student.name as string,
           email: student.email as string,
           class: (student.class as string) || "—",
@@ -101,7 +103,11 @@ export default function TeacherStudentsPage() {
               </thead>
               <tbody>
                 {students.map((student) => (
-                  <tr key={student.$id} className="border-b last:border-0">
+                  <tr
+                    key={student.$id}
+                    className="border-b last:border-0 hover:bg-gray-50 cursor-pointer transition"
+                    onClick={() => router.push(`/teacher/students/${student.userId}`)}
+                  >
                     <td className="px-6 py-4">
                       <div>
                         <p className="font-medium">{student.name}</p>
