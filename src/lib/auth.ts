@@ -1,5 +1,5 @@
 import { account, databases, DATABASE_ID, COLLECTIONS } from "./appwrite";
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 
 export type UserRole = "admin" | "teacher" | "student";
 
@@ -14,6 +14,18 @@ export interface UserProfile {
   language: "ru" | "kk";
 }
 
+function saveSession(session: { $id: string; userId: string }) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("appwrite_session", JSON.stringify(session));
+  }
+}
+
+function clearSession() {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("appwrite_session");
+  }
+}
+
 export async function register(
   email: string,
   password: string,
@@ -26,7 +38,8 @@ export async function register(
   const authUser = await account.create(ID.unique(), email, password, name);
 
   // Create session
-  await account.createEmailPasswordSession(email, password);
+  const session = await account.createEmailPasswordSession(email, password);
+  saveSession(session);
 
   // Create user profile in database
   await databases.createDocument(DATABASE_ID, COLLECTIONS.USERS, ID.unique(), {
@@ -43,17 +56,25 @@ export async function register(
 }
 
 export async function login(email: string, password: string) {
-  return await account.createEmailPasswordSession(email, password);
+  const session = await account.createEmailPasswordSession(email, password);
+  saveSession(session);
+  return session;
 }
 
 export async function logout() {
-  return await account.deleteSession("current");
+  try {
+    await account.deleteSession("current");
+  } catch {
+    // session may already be expired
+  }
+  clearSession();
 }
 
 export async function getCurrentUser() {
   try {
     return await account.get();
   } catch {
+    clearSession();
     return null;
   }
 }
@@ -63,7 +84,7 @@ export async function getUserProfile(userId: string): Promise<UserProfile | null
     const response = await databases.listDocuments(
       DATABASE_ID,
       COLLECTIONS.USERS,
-      [`equal("userId", "${userId}")`]
+      [Query.equal("userId", userId)]
     );
     if (response.documents.length > 0) {
       return response.documents[0] as unknown as UserProfile;
