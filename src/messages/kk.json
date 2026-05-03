@@ -95,6 +95,12 @@
     "myStudents": "Менің оқушыларым",
     "createLesson": "Сабақ құру",
     "editLesson": "Сабақты өңдеу",
+    "createTest": "Тест құру",
+    "editTest": "Тестті өңдеу",
+    "addQuestion": "Сұрақ қосу",
+    "clickCorrect": "Дұрыс жауапты белгілеу үшін сол жақтағы шеңберді басыңыз",
+    "hasTest": "Тест",
+    "noTest": "Тест жоқ",
     "studentProgress": "Оқушылар прогресі",
     "className": "Сынып",
     "addStudent": "Оқушы қосу"

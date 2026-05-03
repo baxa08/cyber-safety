@@ -95,6 +95,12 @@
     "myStudents": "Мои ученики",
     "createLesson": "Создать урок",
     "editLesson": "Редактировать урок",
+    "createTest": "Создать тест",
+    "editTest": "Редактировать тест",
+    "addQuestion": "Добавить вопрос",
+    "clickCorrect": "Нажмите на кружок слева, чтобы отметить правильный ответ",
+    "hasTest": "Тест",
+    "noTest": "Нет теста",
     "studentProgress": "Прогресс учеников",
     "className": "Класс",
     "addStudent": "Добавить ученика"

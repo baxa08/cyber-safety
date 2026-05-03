@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/routing";
-import { getLessons, deleteLesson, Lesson } from "@/lib/lessons";
+import { getLessons, deleteLesson, getTestByLessonId, Lesson } from "@/lib/lessons";
 import { getCurrentUser, getUserProfile } from "@/lib/auth";
 
 export default function TeacherLessonsPage() {
@@ -11,6 +11,8 @@ export default function TeacherLessonsPage() {
   const locale = useLocale();
   const router = useRouter();
   const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [testsMap, setTestsMap] = useState<Record<string, boolean>>({});
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,11 +24,20 @@ export default function TeacherLessonsPage() {
       }
       const profile = await getUserProfile(user.$id);
       if (!profile || (profile.role !== "teacher" && profile.role !== "admin")) {
-        router.push("/dashboard");
+        router.push("/lessons");
         return;
       }
+      setIsAdmin(profile.role === "admin");
       const data = await getLessons();
       setLessons(data);
+
+      const testStatus: Record<string, boolean> = {};
+      for (const lesson of data) {
+        const test = await getTestByLessonId(lesson.$id);
+        testStatus[lesson.$id] = !!test;
+      }
+      setTestsMap(testStatus);
+
       setLoading(false);
     }
     load();
@@ -75,6 +86,9 @@ export default function TeacherLessonsPage() {
                   <th className="text-left px-6 py-3 text-sm font-medium text-gray-500">
                     {t("lessons.difficulty")}
                   </th>
+                  <th className="text-center px-6 py-3 text-sm font-medium text-gray-500">
+                    {t("common.tests")}
+                  </th>
                   <th className="text-right px-6 py-3 text-sm font-medium text-gray-500">
                     {t("common.edit")}
                   </th>
@@ -89,6 +103,28 @@ export default function TeacherLessonsPage() {
                     </td>
                     <td className="px-6 py-4 text-sm">
                       {t(`lessons.${lesson.difficulty}`)}
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      {isAdmin ? (
+                        <Link
+                          href={`/teacher/lessons/${lesson.$id}/test`}
+                          className={`text-sm px-3 py-1 rounded-full ${
+                            testsMap[lesson.$id]
+                              ? "bg-green-100 text-green-700 hover:bg-green-200"
+                              : "bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
+                          }`}
+                        >
+                          {testsMap[lesson.$id] ? t("teacher.editTest") : t("teacher.createTest")}
+                        </Link>
+                      ) : (
+                        <span className={`text-sm px-3 py-1 rounded-full ${
+                          testsMap[lesson.$id]
+                            ? "bg-green-100 text-green-700"
+                            : "bg-gray-100 text-gray-500"
+                        }`}>
+                          {testsMap[lesson.$id] ? t("teacher.hasTest") : t("teacher.noTest")}
+                        </span>
+                      )}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <button
