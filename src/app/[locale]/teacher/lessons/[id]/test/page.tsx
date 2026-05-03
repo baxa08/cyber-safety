@@ -66,7 +66,7 @@ export default function CreateTestPage() {
               question_kk: q.question_kk,
               options_ru: q.options_ru as [string, string, string, string],
               options_kk: q.options_kk as [string, string, string, string],
-              correctIndex: q.correctIndex,
+              correctIndex: Number(q.correctIndex),
             }))
           );
         }
