@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { Link, useRouter } from "@/i18n/routing";
 import { databases, DATABASE_ID, COLLECTIONS } from "@/lib/appwrite";
 import { saveProgress, TestQuestion } from "@/lib/lessons";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser, getUserProfile } from "@/lib/auth";
 
 export default function TestPage() {
   const t = useTranslations();
@@ -23,10 +23,21 @@ export default function TestPage() {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     async function load() {
       try {
+        const user = await getCurrentUser();
+        if (user) {
+          const profile = await getUserProfile(user.$id);
+          if (profile?.role === "admin") {
+            setIsAdmin(true);
+            setLoading(false);
+            return;
+          }
+        }
+
         const doc = await databases.getDocument(DATABASE_ID, COLLECTIONS.TESTS, testId);
         const parsed: TestQuestion[] = JSON.parse(doc.questions as string);
         setQuestions(parsed);
@@ -88,6 +99,24 @@ export default function TestPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500">{t("common.loading")}</p>
+      </div>
+    );
+  }
+
+  if (isAdmin) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="bg-white rounded-xl border p-8 max-w-md w-full text-center">
+          <div className="text-5xl mb-4">🔒</div>
+          <h2 className="text-xl font-bold mb-2">{t("tests.adminRestricted")}</h2>
+          <p className="text-gray-600 mb-6">{t("tests.adminRestrictedDesc")}</p>
+          <Link
+            href="/lessons"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+          >
+            {t("common.lessons")}
+          </Link>
+        </div>
       </div>
     );
   }

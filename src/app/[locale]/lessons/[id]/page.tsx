@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 import { Link, useRouter } from "@/i18n/routing";
 import { getLesson, getTestByLessonId, saveProgress, Lesson, Test } from "@/lib/lessons";
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentUser, getUserProfile } from "@/lib/auth";
 
 export default function LessonPage() {
   const t = useTranslations();
@@ -15,12 +15,20 @@ export default function LessonPage() {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [test, setTest] = useState<Test | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const lessonId = params.id as string;
 
   useEffect(() => {
     async function load() {
       try {
+        const user = await getCurrentUser();
+        if (user) {
+          const profile = await getUserProfile(user.$id);
+          if (profile?.role === "admin") {
+            setIsAdmin(true);
+          }
+        }
         const lessonData = await getLesson(lessonId);
         setLesson(lessonData);
         const testData = await getTestByLessonId(lessonId);
@@ -113,12 +121,14 @@ export default function LessonPage() {
             <Link href="/lessons" className="text-gray-600 hover:text-gray-900">
               ← {t("common.back")}
             </Link>
-            <button
-              onClick={handleComplete}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
-            >
-              {test ? t("lessons.takeTest") : t("common.next")}
-            </button>
+            {!isAdmin && (
+              <button
+                onClick={handleComplete}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+              >
+                {test ? t("lessons.takeTest") : t("common.next")}
+              </button>
+            )}
           </div>
         </div>
       </main>
