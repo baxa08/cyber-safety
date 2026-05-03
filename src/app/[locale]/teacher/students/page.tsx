@@ -81,18 +81,7 @@ export default function TeacherStudentsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b px-6 py-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">{t("common.appName")}</Link>
-          <nav className="flex gap-4">
-            <Link href="/teacher/lessons" className="text-gray-600 hover:text-gray-900">{t("teacher.myLessons")}</Link>
-            <Link href="/teacher/students" className="text-blue-600 font-medium">{t("teacher.myStudents")}</Link>
-            <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">{t("common.dashboard")}</Link>
-          </nav>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">{t("teacher.myStudents")}</h1>
 
         {students.length === 0 ? (
@@ -128,7 +117,7 @@ export default function TeacherStudentsPage() {
             </table>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

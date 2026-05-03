@@ -169,18 +169,10 @@ export default function TestPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b px-6 py-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
-            {t("common.appName")}
-          </Link>
-          <span className="text-sm text-gray-500">
-            {t("tests.question")} {currentQuestion + 1} {t("tests.of")} {questions.length}
-          </span>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-2xl">
+      <div className="container mx-auto px-4 py-8 max-w-2xl">
+        <p className="text-sm text-gray-500 mb-4 text-right">
+          {t("tests.question")} {currentQuestion + 1} {t("tests.of")} {questions.length}
+        </p>
         <div className="bg-white rounded-xl border p-8">
           {/* Progress bar */}
           <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
@@ -235,7 +227,7 @@ export default function TestPage() {
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

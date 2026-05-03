@@ -55,9 +55,6 @@ export function Navbar() {
                   {t("admin.statistics")}
                 </Link>
               )}
-              <Link href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900">
-                {t("common.dashboard")}
-              </Link>
               <button
                 onClick={handleLogout}
                 className="text-sm text-red-600 hover:text-red-800"

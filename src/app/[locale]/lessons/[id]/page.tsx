@@ -84,18 +84,7 @@ export default function LessonPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b px-6 py-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold">
-            {t("common.appName")}
-          </Link>
-          <Link href="/lessons" className="text-gray-600 hover:text-gray-900">
-            {t("common.back")}
-          </Link>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-8 max-w-3xl">
         <div className="bg-white rounded-xl border p-8">
           <div className="mb-6">
             <span className="text-sm text-gray-500">
@@ -131,7 +120,7 @@ export default function LessonPage() {
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
