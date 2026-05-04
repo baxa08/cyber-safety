@@ -76,13 +76,16 @@ export default function TeacherStudentsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{t("common.loading")}</p>
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-gray-500 text-sm">{t("common.loading")}</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">{t("teacher.myStudents")}</h1>
 
@@ -91,21 +94,21 @@ export default function TeacherStudentsPage() {
             <p>Ученики пока не зарегистрированы</p>
           </div>
         ) : (
-          <div className="bg-white rounded-xl border overflow-hidden">
+          <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b">
+              <thead className="bg-gray-50/80 border-b">
                 <tr>
-                  <th className="text-left px-6 py-3 text-sm font-medium text-gray-500">{t("auth.name")}</th>
-                  <th className="text-left px-6 py-3 text-sm font-medium text-gray-500">{t("auth.class")}</th>
-                  <th className="text-left px-6 py-3 text-sm font-medium text-gray-500">{t("dashboard.completedLessons")}</th>
-                  <th className="text-left px-6 py-3 text-sm font-medium text-gray-500">{t("dashboard.averageScore")}</th>
+                  <th className="text-left px-6 py-4 text-sm font-medium text-gray-500">{t("auth.name")}</th>
+                  <th className="text-left px-6 py-4 text-sm font-medium text-gray-500">{t("auth.class")}</th>
+                  <th className="text-left px-6 py-4 text-sm font-medium text-gray-500">{t("dashboard.completedLessons")}</th>
+                  <th className="text-left px-6 py-4 text-sm font-medium text-gray-500">{t("dashboard.averageScore")}</th>
                 </tr>
               </thead>
               <tbody>
                 {students.map((student) => (
                   <tr
                     key={student.$id}
-                    className="border-b last:border-0 hover:bg-gray-50 cursor-pointer transition"
+                    className="border-b last:border-0 hover:bg-blue-50/50 cursor-pointer transition-colors"
                     onClick={() => router.push(`/teacher/students/${student.userId}`)}
                   >
                     <td className="px-6 py-4">
@@ -115,8 +118,8 @@ export default function TeacherStudentsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-sm">{student.class}</td>
-                    <td className="px-6 py-4 text-sm">{student.lessonsCompleted}</td>
-                    <td className="px-6 py-4 text-sm">{student.averageScore}%</td>
+                    <td className="px-6 py-4 text-sm font-medium">{student.lessonsCompleted}</td>
+                    <td className="px-6 py-4 text-sm font-medium">{student.averageScore}%</td>
                   </tr>
                 ))}
               </tbody>

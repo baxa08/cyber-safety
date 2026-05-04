@@ -67,7 +67,10 @@ export default function AdminStatsPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">{t("common.loading")}</p>
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-3 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <p className="text-gray-500 text-sm">{t("common.loading")}</p>
+        </div>
       </div>
     );
   }
@@ -75,52 +78,52 @@ export default function AdminStatsPage() {
   if (!stats) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">{t("admin.statistics")}</h1>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl border">
-            <h3 className="text-sm font-medium text-gray-500">{t("admin.totalUsers")}</h3>
-            <p className="text-3xl font-bold mt-2">{stats.totalUsers}</p>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 rounded-2xl border border-blue-100 shadow-sm">
+            <h3 className="text-sm font-medium text-blue-600">{t("admin.totalUsers")}</h3>
+            <p className="text-3xl font-bold mt-2 text-blue-900">{stats.totalUsers}</p>
           </div>
-          <div className="bg-white p-6 rounded-xl border">
-            <h3 className="text-sm font-medium text-gray-500">{t("auth.roleStudent")}</h3>
-            <p className="text-3xl font-bold mt-2">{stats.students}</p>
+          <div className="bg-gradient-to-br from-green-50 to-green-100/50 p-6 rounded-2xl border border-green-100 shadow-sm">
+            <h3 className="text-sm font-medium text-green-600">{t("auth.roleStudent")}</h3>
+            <p className="text-3xl font-bold mt-2 text-green-900">{stats.students}</p>
           </div>
-          <div className="bg-white p-6 rounded-xl border">
-            <h3 className="text-sm font-medium text-gray-500">{t("auth.roleTeacher")}</h3>
-            <p className="text-3xl font-bold mt-2">{stats.teachers}</p>
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 p-6 rounded-2xl border border-purple-100 shadow-sm">
+            <h3 className="text-sm font-medium text-purple-600">{t("auth.roleTeacher")}</h3>
+            <p className="text-3xl font-bold mt-2 text-purple-900">{stats.teachers}</p>
           </div>
-          <div className="bg-white p-6 rounded-xl border">
-            <h3 className="text-sm font-medium text-gray-500">{t("admin.totalLessons")}</h3>
-            <p className="text-3xl font-bold mt-2">{stats.totalLessons}</p>
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 p-6 rounded-2xl border border-orange-100 shadow-sm">
+            <h3 className="text-sm font-medium text-orange-600">{t("admin.totalLessons")}</h3>
+            <p className="text-3xl font-bold mt-2 text-orange-900">{stats.totalLessons}</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-xl border">
+          <div className="bg-white p-6 rounded-2xl border shadow-sm">
             <h3 className="text-sm font-medium text-gray-500 mb-4">Процент прохождения</h3>
             <div className="flex items-center gap-4">
-              <div className="w-full bg-gray-200 rounded-full h-4">
+              <div className="w-full bg-gray-100 rounded-full h-4">
                 <div
-                  className="bg-green-500 h-4 rounded-full"
+                  className="bg-gradient-to-r from-green-500 to-emerald-500 h-4 rounded-full transition-all"
                   style={{ width: `${stats.completionRate}%` }}
                 />
               </div>
-              <span className="font-bold text-lg">{stats.completionRate}%</span>
+              <span className="font-bold text-lg min-w-[3rem]">{stats.completionRate}%</span>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-xl border">
+          <div className="bg-white p-6 rounded-2xl border shadow-sm">
             <h3 className="text-sm font-medium text-gray-500 mb-4">{t("dashboard.averageScore")}</h3>
             <div className="flex items-center gap-4">
-              <div className="w-full bg-gray-200 rounded-full h-4">
+              <div className="w-full bg-gray-100 rounded-full h-4">
                 <div
-                  className="bg-blue-500 h-4 rounded-full"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-500 h-4 rounded-full transition-all"
                   style={{ width: `${stats.averageScore}%` }}
                 />
               </div>
-              <span className="font-bold text-lg">{stats.averageScore}%</span>
+              <span className="font-bold text-lg min-w-[3rem]">{stats.averageScore}%</span>
             </div>
           </div>
         </div>
