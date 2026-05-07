@@ -128,3 +128,43 @@
     @apply font-sans;
   }
 }
+
+/* Article link styles — make links obvious for students */
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+.prose a:hover {
+  color: #1d4ed8;
+}
+.prose a::after {
+  content: " ↗";
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+
+/* Links list in articles — card-style */
+.prose ul a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #2563eb;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.prose ul a:hover {
+  background: #dbeafe;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.15);
+}
+.prose ul a::after {
+  content: "↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
