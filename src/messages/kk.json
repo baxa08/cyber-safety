@@ -122,7 +122,10 @@
     "articleTitle": "Тақырыбы",
     "articleContent": "Мазмұны",
     "articleCategory": "Санаты",
-    "articleOrder": "Реті"
+    "articleOrder": "Реті",
+    "links": "Пайдалы сілтемелер",
+    "addLink": "Сілтеме қосу",
+    "linkTitle": "Сілтеме атауы"
   },
   "admin": {
     "users": "Пайдаланушылар",

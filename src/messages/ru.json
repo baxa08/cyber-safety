@@ -122,7 +122,10 @@
     "articleTitle": "Заголовок",
     "articleContent": "Содержание",
     "articleCategory": "Категория",
-    "articleOrder": "Порядок"
+    "articleOrder": "Порядок",
+    "links": "Полезные ссылки",
+    "addLink": "Добавить ссылку",
+    "linkTitle": "Название ссылки"
   },
   "admin": {
     "users": "Пользователи",

@@ -20,11 +20,26 @@ const categories = [
   "general",
 ];
 
+interface LinkItem {
+  title: string;
+  url: string;
+}
+
+function linksToHtml(links: LinkItem[], heading: string): string {
+  if (links.length === 0) return "";
+  const items = links
+    .filter((l) => l.url && l.title)
+    .map((l) => `<li><a href="${l.url}" target="_blank">${l.title}</a></li>`)
+    .join("\n");
+  return `\n<h3>${heading}</h3>\n<ul>\n${items}\n</ul>`;
+}
+
 export default function CreateArticlePage() {
   const t = useTranslations();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [links, setLinks] = useState<LinkItem[]>([{ title: "", url: "" }]);
 
   const [form, setForm] = useState({
     title_ru: "",
@@ -39,6 +54,22 @@ export default function CreateArticlePage() {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
+  function updateLink(index: number, field: "title" | "url", value: string) {
+    setLinks((prev) => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      return updated;
+    });
+  }
+
+  function addLink() {
+    setLinks((prev) => [...prev, { title: "", url: "" }]);
+  }
+
+  function removeLink(index: number) {
+    setLinks((prev) => prev.filter((_, i) => i !== index));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -51,8 +82,14 @@ export default function CreateArticlePage() {
         return;
       }
 
+      const validLinks = links.filter((l) => l.url && l.title);
+      const linksHtmlRu = linksToHtml(validLinks, "Полезные ссылки");
+      const linksHtmlKk = linksToHtml(validLinks, "Пайдалы сілтемелер");
+
       await createArticle({
         ...form,
+        content_ru: form.content_ru + linksHtmlRu,
+        content_kk: form.content_kk + linksHtmlKk,
         authorId: user.$id,
       });
 
@@ -127,6 +164,51 @@ export default function CreateArticlePage() {
               rows={10}
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
             />
+          </div>
+
+          {/* Links section */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                {t("knowledge.links")}
+              </label>
+              <button
+                type="button"
+                onClick={addLink}
+                className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+              >
+                + {t("knowledge.addLink")}
+              </button>
+            </div>
+            <div className="space-y-2">
+              {links.map((link, i) => (
+                <div key={i} className="flex gap-2">
+                  <input
+                    type="text"
+                    placeholder={t("knowledge.linkTitle")}
+                    value={link.title}
+                    onChange={(e) => updateLink(i, "title", e.target.value)}
+                    className="flex-1 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                  <input
+                    type="url"
+                    placeholder="https://..."
+                    value={link.url}
+                    onChange={(e) => updateLink(i, "url", e.target.value)}
+                    className="flex-1 px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                  {links.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeLink(i)}
+                      className="text-red-400 hover:text-red-600 px-2"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4">
