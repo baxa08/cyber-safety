@@ -40,7 +40,10 @@ export function Navbar() {
               <Link href="/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
                 {t("common.lessons")}
               </Link>
-              <Link href="/knowledge" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
+              <Link
+                href={profile.role === "teacher" || profile.role === "admin" ? "/teacher/articles" : "/knowledge"}
+                className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition"
+              >
                 {t("knowledge.nav")}
               </Link>
               {profile.role === "student" && (
@@ -49,14 +52,9 @@ export function Navbar() {
                 </Link>
               )}
               {(profile.role === "teacher" || profile.role === "admin") && (
-                <>
-                  <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
-                    {t("teacher.myLessons")}
-                  </Link>
-                  <Link href="/teacher/articles" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
-                    {t("knowledge.nav")} +
-                  </Link>
-                </>
+                <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
+                  {t("teacher.myLessons")}
+                </Link>
               )}
               {profile.role === "teacher" && (
                 <Link href="/teacher/students" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">

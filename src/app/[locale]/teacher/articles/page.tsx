@@ -65,13 +65,18 @@ export default function TeacherArticlesPage() {
             {articles.map((article) => (
               <div
                 key={article.$id}
-                className="bg-white rounded-xl border p-5 flex items-center justify-between"
+                className="bg-white rounded-xl border p-5 flex items-center justify-between hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
               >
-                <div>
-                  <h3 className="font-medium text-gray-900">{getTitle(article)}</h3>
+                <Link
+                  href={`/knowledge/${article.$id}`}
+                  className="flex-1 min-w-0"
+                >
+                  <h3 className="font-medium text-gray-900 hover:text-blue-600 transition">
+                    {getTitle(article)}
+                  </h3>
                   <span className="text-xs text-gray-500">{article.category}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </Link>
+                <div className="flex items-center gap-2 ml-4 shrink-0">
                   <button
                     onClick={() => handleDelete(article.$id)}
                     className="text-sm text-red-500 hover:text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-50 transition"
