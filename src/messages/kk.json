@@ -109,6 +109,21 @@
     "className": "Сынып",
     "addStudent": "Оқушы қосу"
   },
+  "knowledge": {
+    "nav": "Білім базасы",
+    "title": "Білім базасы",
+    "subtitle": "Киберқауіпсіздік бойынша теориялық материалдар",
+    "all": "Барлығы",
+    "empty": "Мақалалар әлі қосылмаған",
+    "notFound": "Мақала табылмады",
+    "backToList": "Тізімге оралу",
+    "createArticle": "Мақала құру",
+    "editArticle": "Мақаланы өңдеу",
+    "articleTitle": "Тақырыбы",
+    "articleContent": "Мазмұны",
+    "articleCategory": "Санаты",
+    "articleOrder": "Реті"
+  },
   "admin": {
     "users": "Пайдаланушылар",
     "content": "Контент",

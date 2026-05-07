@@ -40,15 +40,23 @@ export function Navbar() {
               <Link href="/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
                 {t("common.lessons")}
               </Link>
+              <Link href="/knowledge" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
+                {t("knowledge.nav")}
+              </Link>
               {profile.role === "student" && (
                 <Link href="/progress" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
                   {t("common.progress")}
                 </Link>
               )}
               {(profile.role === "teacher" || profile.role === "admin") && (
-                <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
-                  {t("teacher.myLessons")}
-                </Link>
+                <>
+                  <Link href="/teacher/lessons" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
+                    {t("teacher.myLessons")}
+                  </Link>
+                  <Link href="/teacher/articles" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">
+                    {t("knowledge.nav")} +
+                  </Link>
+                </>
               )}
               {profile.role === "teacher" && (
                 <Link href="/teacher/students" className="text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition">

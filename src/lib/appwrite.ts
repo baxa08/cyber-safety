@@ -21,4 +21,5 @@ export const COLLECTIONS = {
   TESTS: "tests",
   PROGRESS: "progress",
   CLASSES: "classes",
+  ARTICLES: "articles",
 } as const;

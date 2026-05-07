@@ -109,6 +109,21 @@
     "className": "Класс",
     "addStudent": "Добавить ученика"
   },
+  "knowledge": {
+    "nav": "База знаний",
+    "title": "База знаний",
+    "subtitle": "Теоретические материалы по кибербезопасности",
+    "all": "Все",
+    "empty": "Статьи пока не добавлены",
+    "notFound": "Статья не найдена",
+    "backToList": "Вернуться к списку",
+    "createArticle": "Создать статью",
+    "editArticle": "Редактировать статью",
+    "articleTitle": "Заголовок",
+    "articleContent": "Содержание",
+    "articleCategory": "Категория",
+    "articleOrder": "Порядок"
+  },
   "admin": {
     "users": "Пользователи",
     "content": "Контент",
