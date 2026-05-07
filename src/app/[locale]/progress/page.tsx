@@ -37,8 +37,9 @@ export default function ProgressPage() {
   }
 
   const completedCount = progress.filter((p) => p.completed).length;
-  const averageScore = progress.length > 0
-    ? Math.round(progress.filter((p) => p.score).reduce((sum, p) => sum + (p.score || 0), 0) / progress.filter((p) => p.score).length) || 0
+  const scores = progress.filter((p) => p.score != null).map((p) => p.score!);
+  const averageScore = scores.length > 0
+    ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
     : 0;
 
   if (loading) {
