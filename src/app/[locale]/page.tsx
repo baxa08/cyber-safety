@@ -7,25 +7,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gray-950 text-white overflow-hidden">
-      {/* University Header */}
-      <section className="border-b border-gray-800 bg-gray-900/50">
-        <div className="container mx-auto px-4 py-4 flex flex-col items-center gap-3">
-          <Image
-            src="/itu-logo.jpg"
-            alt="iTU - Sherkhan Murtaza University"
-            width={80}
-            height={80}
-            className="rounded-xl"
-          />
-          <h2 className="text-sm md:text-base font-semibold text-gray-300 tracking-wide text-center uppercase">
-            Шерхан Мұртаза атындағы Халықаралық Тараз Университеті
-          </h2>
-          <span className="text-xs md:text-sm text-green-400 font-medium">
-            Диссертациялық жұмыс
-          </span>
-        </div>
-      </section>
-
       {/* Hero Section */}
       <section className="relative">
         {/* Animated grid background */}
@@ -44,7 +25,7 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-1.5 mb-6">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             <span className="text-green-400 text-sm font-medium">
-              {t("home.forStudents")} & {t("home.forTeachers")}
+              Диссертациялық жұмыс
             </span>
           </div>
 
@@ -151,9 +132,21 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-gray-600">
-          <p>&copy; 2026 CyberSafe — {t("home.subtitle")}</p>
+      <footer className="border-t border-gray-800 py-10">
+        <div className="container mx-auto px-4 flex flex-col items-center gap-4">
+          <Image
+            src="/itu-logo.jpg"
+            alt="iTU - Sherkhan Murtaza University"
+            width={48}
+            height={48}
+            className="rounded-lg opacity-70"
+          />
+          <p className="text-xs text-gray-500 text-center uppercase tracking-wider">
+            Шерхан Мұртаза атындағы Халықаралық Тараз Университеті
+          </p>
+          <p className="text-sm text-gray-600">
+            &copy; 2026 CyberSafe — {t("home.subtitle")}
+          </p>
         </div>
       </footer>
     </main>
