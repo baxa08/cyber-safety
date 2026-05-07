@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Link, useRouter } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
 import { getLessons, getUserProgress, Lesson, Progress } from "@/lib/lessons";
 import { getCurrentUser } from "@/lib/auth";
 
@@ -101,10 +101,8 @@ export default function ProgressPage() {
                 return (
                   <tr key={lesson.$id} className="border-b last:border-0 hover:bg-gray-50/50 transition-colors">
                     <td className="px-6 py-4 text-sm text-gray-500">{lesson.order}</td>
-                    <td className="px-6 py-4">
-                      <Link href={`/lessons/${lesson.$id}`} className="hover:text-blue-600 font-medium transition-colors">
-                        {locale === "kk" ? lesson.title_kk : lesson.title_ru}
-                      </Link>
+                    <td className="px-6 py-4 font-medium text-gray-900">
+                      {locale === "kk" ? lesson.title_kk : lesson.title_ru}
                     </td>
                     <td className="px-6 py-4 text-sm font-medium">
                       {p?.score ? `${p.score}%` : "—"}
