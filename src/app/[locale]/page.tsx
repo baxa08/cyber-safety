@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 
@@ -6,6 +7,25 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gray-950 text-white overflow-hidden">
+      {/* University Header */}
+      <section className="border-b border-gray-800 bg-gray-900/50">
+        <div className="container mx-auto px-4 py-4 flex flex-col items-center gap-3">
+          <Image
+            src="/itu-logo.jpg"
+            alt="iTU - Sherkhan Murtaza University"
+            width={80}
+            height={80}
+            className="rounded-xl"
+          />
+          <h2 className="text-sm md:text-base font-semibold text-gray-300 tracking-wide text-center uppercase">
+            Шерхан Мұртаза атындағы Халықаралық Тараз Университеті
+          </h2>
+          <span className="text-xs md:text-sm text-green-400 font-medium">
+            Диссертациялық жұмыс
+          </span>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative">
         {/* Animated grid background */}
