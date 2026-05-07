@@ -67,6 +67,17 @@ export function Navbar() {
                 </Link>
               )}
               <div className="w-px h-5 bg-gray-200 mx-2" />
+              <Link
+                href="/profile"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-100 transition"
+              >
+                <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-xs font-bold text-white">
+                  {profile.name?.charAt(0)?.toUpperCase() || "?"}
+                </div>
+                <span className="text-sm text-gray-700 font-medium hidden sm:inline">
+                  {profile.name}
+                </span>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="text-sm text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1.5 rounded-lg transition"
