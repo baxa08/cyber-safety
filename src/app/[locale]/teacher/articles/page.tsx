@@ -26,7 +26,7 @@ export default function TeacherArticlesPage() {
   }, []);
 
   async function handleDelete(id: string) {
-    if (!confirm("Удалить статью?")) return;
+    if (!confirm("Удалить теорию?")) return;
     await deleteArticle(id);
     setArticles((prev) => prev.filter((a) => a.$id !== id));
   }

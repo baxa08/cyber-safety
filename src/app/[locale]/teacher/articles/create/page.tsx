@@ -95,7 +95,7 @@ export default function CreateArticlePage() {
 
       router.push("/teacher/articles");
     } catch {
-      setError("Ошибка при создании статьи");
+      setError("Ошибка при создании теории");
     } finally {
       setLoading(false);
     }
