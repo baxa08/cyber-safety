@@ -22,17 +22,10 @@ export default function HomePage() {
             </svg>
           </div>
 
-          <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-1.5 mb-6">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-green-400 text-sm font-medium">
-              Диссертациялық жұмыс
-            </span>
-          </div>
-
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-white">{t("home.title").split(" ").slice(0, -1).join(" ")} </span>
+            <span className="text-white">{t("home.title").split(" ").slice(0, 3).join(" ")} </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-              {t("home.title").split(" ").slice(-1)}
+              {t("home.title").split(" ").slice(3).join(" ")}
             </span>
           </h1>
 
