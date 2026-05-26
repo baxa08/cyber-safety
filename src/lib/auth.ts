@@ -56,9 +56,21 @@ export async function register(
 }
 
 export async function login(email: string, password: string) {
-  const session = await account.createEmailPasswordSession(email, password);
-  saveSession(session);
-  return session;
+  try {
+    const session = await account.createEmailPasswordSession(email, password);
+    saveSession(session);
+    return session;
+  } catch (error: unknown) {
+    // If session already exists, delete it and retry once
+    if (error instanceof Error && error.message.includes("session_already_exists")) {
+      await account.deleteSession("current");
+      clearSession();
+      const session = await account.createEmailPasswordSession(email, password);
+      saveSession(session);
+      return session;
+    }
+    throw error;
+  }
 }
 
 export async function logout() {
